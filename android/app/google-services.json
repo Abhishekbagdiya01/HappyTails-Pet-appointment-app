@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "135444170014",
+    "project_id": "pet-appointment-a597b",
+    "storage_bucket": "pet-appointment-a597b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:135444170014:android:14ddc52d64536cff80750f",
+        "android_client_info": {
+          "package_name": "com.example.pet_appointment_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCRnmpYfhzNQp6X27KrHvttrdeZNf7qnk0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
