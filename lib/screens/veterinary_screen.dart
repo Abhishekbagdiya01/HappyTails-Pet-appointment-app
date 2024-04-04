@@ -52,7 +52,7 @@ class _AppointmentListPageState extends State<VeterinaryScreen> {
                       color: Color(0xffBCF4DC),
                     ),
                     child: ListTile(
-                        onTap: () {
+                        onLongPress: () {
                           showDialog(
                             context: context,
                             builder: (context) => AlertDialog(

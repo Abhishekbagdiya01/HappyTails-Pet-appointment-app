@@ -88,7 +88,7 @@ class _ScheduledPageState extends State<PreviewScheduledPage> {
                         ),
                   ),
                   Text(
-                    'Types of Treats :  ?? ',
+                    'Types of Treats :  ${widget.appointment.typeOfTreats} ',
                     style: GoogleFonts.roboto(
                         fontSize: 18,
                         fontWeight: FontWeight.normal,

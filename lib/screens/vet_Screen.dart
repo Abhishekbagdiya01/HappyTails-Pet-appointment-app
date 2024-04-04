@@ -99,7 +99,7 @@ class _VetScreenState extends State<VetScreen> {
               ),
             ),
             CustomTextFeild(
-              title: 'Bread of Food',
+              title: 'Brand of Food',
               controller: brandOfFood,
             ),
             CustomTextFeild(

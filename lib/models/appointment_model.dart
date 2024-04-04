@@ -33,6 +33,7 @@ class AppointmentModel {
       'petId': petId,
       'userId': userId,
       'doctorId': doctorId,
+      'petName': petName,
       'date': date,
       'time': time,
       'brandOfFood': brandOfFood,
