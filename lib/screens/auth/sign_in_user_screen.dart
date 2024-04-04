@@ -70,12 +70,13 @@ class SignInScreen extends StatelessWidget {
                         onPressed: () async {
                           if (emailController.text.trim().isNotEmpty &&
                               passwordController.text.trim().isNotEmpty) {
-                            final response = await UserRepository().loginUser(
-                                email: emailController.text,
-                                password: passwordController.text);
+                            final response = await UserAuthRepository()
+                                .loginUser(
+                                    email: emailController.text,
+                                    password: passwordController.text);
 
                             if (response == "Successfully login") {
-                              // SharedPref().setAccountType("User");
+                              SharedPref().setAccountType("User");
                               snackbarMessenger(context, response);
                               Navigator.pushReplacement(
                                   context,

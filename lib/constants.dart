@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:form_field_validator/form_field_validator.dart';
 
 const primaryColor = Color(0xFF255ED6);
-const textColor = Color(0xFF35364F);
+const textColor = Colors.black;
 const backgroundColor = Color(0xFFE6EFF9);
 const redColor = Color(0xFFE85050);
 
@@ -27,5 +27,3 @@ final passwordValidator = MultiValidator(
         errorText: 'passwords must have at least one special character')
   ],
 );
-
-

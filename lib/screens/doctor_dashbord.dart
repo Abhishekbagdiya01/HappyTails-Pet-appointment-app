@@ -1,11 +1,8 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:pet_appointment_app/customButton/custom_button.dart';
 import 'package:pet_appointment_app/models/appointment_model.dart';
-import 'package:pet_appointment_app/repository/appointment_repository.dart';
 import 'package:pet_appointment_app/screens/doctor_home_screen.dart';
-import 'package:pet_appointment_app/screens/vet_Screen.dart';
 
 class DoctorDashboard extends StatefulWidget {
   DoctorDashboard({Key? key}) : super(key: key);
@@ -27,7 +24,6 @@ class _DoctorDesbordState extends State<DoctorDashboard> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
   }
 
@@ -188,14 +184,14 @@ class _ScheduleAppointmentPageState extends State<ScheduleAppointmentPage> {
               title: 'Age ',
               myIcon: Icon(Icons.calendar_month),
             ),
-            CustomButtom(
+            CustomButton(
                 title: 'Next...',
                 voidCallback: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => VetScreen(),
-                      ));
+                  // Navigator.push(
+                  //     context,
+                  //     MaterialPageRoute(
+                  //       builder: (context) => VetScreen(),
+                  //     ));
                 })
           ],
         ),
@@ -207,19 +203,23 @@ class _ScheduleAppointmentPageState extends State<ScheduleAppointmentPage> {
 class CustomTextFeild extends StatelessWidget {
   CustomTextFeild({
     required this.title,
+    this.controller,
     this.myIcon,
   });
 
   String title;
   Icon? myIcon;
+  TextEditingController? controller;
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: TextField(
+        controller: controller,
         decoration: InputDecoration(
           hintText: title,
+
           suffixIcon: myIcon,
           hintStyle: TextStyle(color: Colors.grey),
           // Hint text color
@@ -232,7 +232,6 @@ class CustomTextFeild extends StatelessWidget {
         ),
         // style: TextStyle(color: Colors.black), // Text color
         style: GoogleFonts.jacquesFrancois(
-          color: Color(0xffD3F2EE),
           fontWeight: FontWeight.bold,
         ),
       ),

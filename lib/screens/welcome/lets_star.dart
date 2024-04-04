@@ -53,14 +53,7 @@ class _letsStartState extends State<letsStart> {
             SizedBox(
               height: screenHeight / 10,
             ),
-            TextButton(
-                onPressed: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) {
-                    return SignInScreen();
-                  }));
-                },
-                child: Text("Login")),
-            CustomButtom(
+            CustomButton(
               title: "Register as User",
               voidCallback: () {
                 Navigator.push(context, MaterialPageRoute(builder: (context) {
@@ -73,7 +66,7 @@ class _letsStartState extends State<letsStart> {
               height: screenHeight / 100,
             ),
 
-            CustomButtom(
+            CustomButton(
               title: "Register as Doctor",
               voidCallback: () {
                 Navigator.push(context, MaterialPageRoute(builder: (context) {

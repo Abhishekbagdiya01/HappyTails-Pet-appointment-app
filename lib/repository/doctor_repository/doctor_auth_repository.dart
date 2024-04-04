@@ -17,7 +17,7 @@ class DoctorAuthRepository {
           email: doctorModel.email,
           phoneNumber: doctorModel.email,
           degree: doctorModel.degree,
-          accountType: "Doctor",
+          imageUrl: "",
           specialization: doctorModel.specialization);
       await _firebaseFirestore
           .collection("Doctors")

@@ -13,8 +13,8 @@ class CustomButtom extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialButton(
-      minWidth: MediaQuery.sizeOf(context).width,
-      height: 100,
+      minWidth: MediaQuery.sizeOf(context).width * 0.6,
+      height: 50,
       color: Color(0xFF9CDFEB),
       onPressed: voidCallback,
       child: Text(title,

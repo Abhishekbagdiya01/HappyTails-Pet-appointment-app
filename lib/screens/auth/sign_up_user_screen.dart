@@ -105,13 +105,14 @@ class SignUpScreen extends StatelessWidget {
                             snackbarMessenger(
                                 context, "Field can not be empty");
                           } else {
-                            String result = await UserRepository().signUpUser(
-                                userModel: UserModel(
-                                    uid: "",
-                                    name: nameController.text,
-                                    email: emailController.text,
-                                    phoneNumber: phoneNoController.text,
-                                    password: passwordController.text));
+                            String result = await UserAuthRepository()
+                                .signUpUser(
+                                    userModel: UserModel(
+                                        uid: "",
+                                        name: nameController.text,
+                                        email: emailController.text,
+                                        phoneNumber: phoneNoController.text,
+                                        password: passwordController.text));
                             if (result == "Successfully Signed Up") {
                               SharedPref().setAccountType("User");
                               Navigator.pushAndRemoveUntil(

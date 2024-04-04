@@ -1,17 +1,26 @@
+import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:pet_appointment_app/screens/adoption.dart';
+import 'package:pet_appointment_app/models/appointment_model.dart';
+import 'package:pet_appointment_app/models/pet_model.dart';
 import 'package:pet_appointment_app/screens/doctor_dashbord.dart';
+import 'package:pet_appointment_app/screens/doctor_list_page.dart';
 
 import '../customButton/custom_button.dart';
 
 class VetScreen extends StatefulWidget {
+  VetScreen({required this.pet});
   @override
+  PetModel pet;
+
   State<VetScreen> createState() => _VetScreenState();
 }
 
 class _VetScreenState extends State<VetScreen> {
-  //bool _isChecked = false;
+  TextEditingController amountOfFeeding = TextEditingController();
+  TextEditingController brandOfFood = TextEditingController();
+  TextEditingController typeOfTreat = TextEditingController();
+
   List<bool> _checkedItems = List.generate(5, (index) => false);
   List details = [
     "Coughing",
@@ -20,29 +29,63 @@ class _VetScreenState extends State<VetScreen> {
     "Diarrhea",
     "Etc...     "
   ];
+  List<bool> _isChecked = [];
+  String selectedDiseases = '';
+
+  @override
+  void initState() {
+    super.initState();
+    _isChecked = List.filled(details.length, false); // Initialize all unchecked
+  }
+
+  void selectedItems() {
+    selectedDiseases = "";
+    for (int i = 0; i < _isChecked.length; i++) {
+      if (_isChecked[i]) {
+        selectedDiseases +=
+            '${details[i]}, '; // Add comma and space for separation
+      }
+    }
+    // if (selectedDiseases.isNotEmpty) {
+    //   selectedDiseases = selectedDiseases.substring(
+    //       0, selectedDiseases.length - 2); // Remove trailing comma and space
+    //   print('Selected Text: $selectedDiseases');
+    // } else {
+    //   print('No items selected');
+    // }
+  }
 
   @override
   Widget build(BuildContext context) {
+/*
+    MyCheckBoxList(options: [
+      'Coughing',
+      'Sneezing',
+      'Vomiting',
+      'Diarrhea',
+      'Etc...   '
+    ]);*/
+
     return Scaffold(
+      resizeToAvoidBottomInset: false,
+      appBar: AppBar(
+        title: Text(
+          'Schedule an\n Appointment',
+          textAlign: TextAlign.center,
+          style: GoogleFonts.jacquesFrancois(
+            fontSize: 24,
+            fontWeight: FontWeight.bold,
+
+            //const Color(0xffD3F2EE)
+          ),
+        ),
+      ),
       body: Padding(
         padding: EdgeInsets.symmetric(vertical: 10.0),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Text(
-                'Schedule an\n Appointment',
-                textAlign: TextAlign.center,
-                style: GoogleFonts.jacquesFrancois(
-                  fontSize: 24,
-                  fontWeight: FontWeight.bold,
-
-                  //const Color(0xffD3F2EE)
-                ),
-              ),
-            ),
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Text(
@@ -56,9 +99,18 @@ class _VetScreenState extends State<VetScreen> {
                 ),
               ),
             ),
-            CustomTextFeild(title: 'Bread of Food'),
-            CustomTextFeild(title: 'Amount of Feeding'),
-            CustomTextFeild(title: 'Type of Treats'),
+            CustomTextFeild(
+              title: 'Bread of Food',
+              controller: brandOfFood,
+            ),
+            CustomTextFeild(
+              title: 'Amount of Feeding',
+              controller: amountOfFeeding,
+            ),
+            CustomTextFeild(
+              title: 'Type of Treats',
+              controller: typeOfTreat,
+            ),
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Text(
@@ -67,58 +119,54 @@ class _VetScreenState extends State<VetScreen> {
                 style: GoogleFonts.jacquesFrancois(
                   fontSize: 14,
                   fontWeight: FontWeight.bold,
-
-                  //const Color(0xffD3F2EE)
                 ),
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Container(
-                width: 350,
-                height: 220,
-                color: Colors.white,
-                child: ListView.builder(
-                  itemCount: _checkedItems.length,
-                  itemBuilder: (context, index) {
-                    return Row(
-                      //mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        Padding(
-                          padding: EdgeInsets.only(
-                              right: 10.0, left: 10.0, top: 5.0, bottom: 5.0),
-                          child: Checkbox(
-                            value: _checkedItems[index],
-                            onChanged: (bool? newValue) {
-                              setState(() {
-                                _checkedItems[index] = newValue!;
-                              });
-                            },
-                          ),
-                        ),
-                        Text(
-                          details[index].toString(),
-                          style: GoogleFonts.jacquesFrancois(
-                            fontSize: 14,
-                            fontWeight: FontWeight.bold,
-
-                            //const Color(0xffD3F2EE)
-                          ),
-                        ),
-                      ],
-                    );
-                  },
-                ),
+            Container(
+              width: double.infinity,
+              height: 350,
+              color: Colors.white,
+              child: Column(
+                children: [
+                  for (int i = 0; i < details.length; i++)
+                    CheckboxListTile(
+                      title: Text(details[i]),
+                      value: _isChecked[i],
+                      onChanged: (value) =>
+                          setState(() => _isChecked[i] = value!),
+                    ),
+                  // ElevatedButton(
+                  //   onPressed: () {
+                  //     return printSelectedData();
+                  //   },
+                  //   child: Text('Print Selected Data'),
+                  // ),
+                ],
               ),
             ),
-            CustomButtom(
+            CustomButton(
                 title: 'Next...',
                 voidCallback: () {
-                  //AdoptionPage
+                  selectedItems();
+                  log(selectedDiseases);
+                  AppointmentModel appointmentModel = AppointmentModel(
+                      appointmentId: "",
+                      userId: widget.pet.ownerId,
+                      amountOfFeeding: amountOfFeeding.text,
+                      brandOfFood: brandOfFood.text,
+                      typeOfTreats: typeOfTreat.text,
+                      diseases: selectedDiseases,
+                      petName: widget.pet.petName,
+                      petId: widget.pet.petId,
+                      doctorId: "",
+                      date: "",
+                      time: "");
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => AdoptionPage(),
+                        builder: (context) => DoctorListPage(
+                          appointmentModel: appointmentModel,
+                        ),
                       ));
                 }),
           ],

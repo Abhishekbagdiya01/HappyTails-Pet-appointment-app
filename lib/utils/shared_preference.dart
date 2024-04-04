@@ -1,14 +1,18 @@
 import 'package:shared_preferences/shared_preferences.dart';
 
+String accounntType = "accounntType";
+String currentRefreshToken = "refreshToken";
+
 class SharedPref {
-  String accountType = "accountType";
-  Future<String?> getAccountType() async {
+  //set accountType
+  void setAccountType(String uid) async {
     final pref = await SharedPreferences.getInstance();
-    return pref.getString(accountType);
+    pref.setString(accounntType, uid);
   }
 
-  void setAccountType(String account) async {
+  //get accountType
+  Future<String?> getAccountType() async {
     final pref = await SharedPreferences.getInstance();
-    pref.setString(accountType, account);
+    return pref.getString(accounntType);
   }
 }

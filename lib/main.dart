@@ -1,6 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:pet_appointment_app/firebase_options.dart';
+import 'package:pet_appointment_app/screens/splash_screen.dart.dart';
 import 'package:pet_appointment_app/screens/welcome/lets_star.dart';
 import 'constants.dart';
 
@@ -33,6 +34,6 @@ class MyApp extends StatelessWidget {
             focusedBorder: textFieldBorder,
           ),
         ),
-        home: letsStart());
+        home: SplashPage());
   }
 }

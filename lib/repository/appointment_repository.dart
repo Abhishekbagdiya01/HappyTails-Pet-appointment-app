@@ -9,31 +9,37 @@ class AppointmentRepository {
   final uuid = Uuid();
 
   //Create Appointments
-  Future<String> createAppointment(
-      {required String userId,
-      required String doctorId,
-      required String petId,
-      required AppointmentModel appointmentModel,
-      required String dateTime}) async {
+  Future<String> createAppointment({
+    required AppointmentModel appointmentModel,
+  }) async {
     try {
-      String appId = uuid.v4();
+      String appointmentId = uuid.v4();
       AppointmentModel newAppointmentModel = AppointmentModel(
-          appointmentId: appId,
-          petId: petId,
-          userId: userId,
-          doctorId: doctorId,
-          dateTime: dateTime,
+          appointmentId: appointmentId,
+          petId: appointmentModel.petId,
+          userId: appointmentModel.userId,
+          doctorId: appointmentModel.doctorId,
+          petName: appointmentModel.petName,
+          date: appointmentModel.date,
+          time: appointmentModel.time,
+          diseases: appointmentModel.diseases,
+          amountOfFeeding: appointmentModel.amountOfFeeding,
+          brandOfFood: appointmentModel.brandOfFood,
+          typeOfTreats: appointmentModel.typeOfTreats,
           status: "pending");
       await _firebaseFirestore
           .collection("Appointments")
-          .doc(petId)
+          .doc(appointmentModel.petId)
           .set(newAppointmentModel.toMap());
 
-      await _firebaseFirestore.collection("Users").doc(userId).update({
+      await _firebaseFirestore
+          .collection("Users")
+          .doc(appointmentModel.userId)
+          .update({
         "appointments":
             FieldValue.arrayUnion([newAppointmentModel.appointmentId])
       });
-      return "Appointment created";
+      return "Appointment submitted";
     } on FirebaseException catch (error) {
       return "${error.message}";
     }

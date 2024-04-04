@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -35,4 +36,13 @@ class CustomTextFeild extends StatelessWidget {
       ),
     );
   }
+}
+
+
+//
+
+
+
+customTextStyle({Color? color, FontWeight? fontWeight = FontWeight.bold}) {
+  return TextStyle(color: color, fontSize: 20, fontWeight: fontWeight);
 }

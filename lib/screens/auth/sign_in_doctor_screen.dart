@@ -8,6 +8,7 @@ import 'package:pet_appointment_app/repository/doctor_repository/doctor_auth_rep
 import 'package:pet_appointment_app/screens/auth/components/sign_up_form_user.dart';
 
 import 'package:pet_appointment_app/screens/doctor_dashbord.dart';
+import 'package:pet_appointment_app/utils/shared_preference.dart';
 
 import 'package:pet_appointment_app/utils/snackbar.dart';
 
@@ -78,8 +79,8 @@ class SignInScreenDoctor extends StatelessWidget {
                                     password: passwordController.text);
 
                             if (response == "Successfully login") {
-                              // SharedPref().setAccountType("Doctor");
-                              log("hellllllllllllo");
+                              SharedPref().setAccountType("Doctor");
+
                               snackbarMessenger(context, response);
                               Navigator.pushReplacement(
                                   context,

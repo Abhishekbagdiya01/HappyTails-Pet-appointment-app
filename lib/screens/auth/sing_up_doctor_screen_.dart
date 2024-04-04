@@ -140,6 +140,7 @@ class SignUpScreenDoctor extends StatelessWidget {
                                         name: doctorNameController.text,
                                         email: doctorEmailController.text,
                                         degree: doctorDegreeController.text,
+                                        imageUrl: "",
                                         specialization:
                                             doctorSpecializationController.text,
                                         phoneNumber:
