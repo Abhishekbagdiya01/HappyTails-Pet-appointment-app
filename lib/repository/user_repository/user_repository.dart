@@ -30,12 +30,13 @@ class UserRepository {
           title: meetUpsModel.title,
           details: meetUpsModel.details,
           dateTime: meetUpsModel.dateTime,
+          location: meetUpsModel.location,
           participients: meetUpsModel.participients);
       await _firebaseFirestore
           .collection("Meetups")
           .doc(uid)
           .set(meetUp.toMap());
-      return "Successfully created a meet-up";
+      return "Meet-up created";
     } on FirebaseException catch (error) {
       return "Error : ${error.message}";
     }
@@ -60,8 +61,12 @@ class UserRepository {
       final meetUpsCollection =
           await _firebaseFirestore.collection("Meetups").get();
 
-      List<MeetUpsModel> listOfMeetups =
-          meetUpsCollection.docs.map((e) => MeetUpsModel.fromSnap(e)).toList();
+      List<MeetUpsModel> listOfMeetups = [];
+      meetUpsCollection
+        ..docs.forEach((doc) {
+          listOfMeetups.add(MeetUpsModel.fromSnap(doc));
+        });
+
       log("legnth : ${listOfMeetups.length} ");
       return listOfMeetups;
     } on FirebaseException catch (error) {

@@ -5,11 +5,13 @@ class MeetUpsModel {
   String title;
   String details;
   String dateTime;
+  String location;
   List participients;
   MeetUpsModel({
     required this.uid,
     required this.title,
     required this.details,
+    required this.location,
     required this.dateTime,
     required this.participients,
   });
@@ -20,6 +22,7 @@ class MeetUpsModel {
         title: snapShot["title"],
         details: snapShot["details"],
         dateTime: snapShot["dateTime"],
+        location: snapShot["location"],
         participients: snapShot["participients"]);
   }
   Map<String, dynamic> toMap() {
@@ -28,6 +31,7 @@ class MeetUpsModel {
       "title": title,
       "details": details,
       "dateTime": dateTime,
+      "location": location,
       "participients": participients
     };
   }
