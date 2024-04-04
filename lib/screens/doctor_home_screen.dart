@@ -5,7 +5,6 @@ import 'package:pet_appointment_app/models/appointment_model.dart';
 import 'package:pet_appointment_app/models/doctor_model.dart';
 import 'package:pet_appointment_app/repository/appointment_repository.dart';
 import 'package:pet_appointment_app/repository/doctor_repository/doctor_repository.dart';
-import 'package:pet_appointment_app/screens/doctor_dashbord.dart';
 
 class DoctorHomePage extends StatefulWidget {
   const DoctorHomePage({Key? key}) : super(key: key);
@@ -256,12 +255,12 @@ class _DoctorHomePageState extends State<DoctorHomePage> {
                                 style: ElevatedButton.styleFrom(
                                     backgroundColor: Colors.green),
                                 onPressed: () {
-                                  Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                        builder: (context) =>
-                                            ScheduleAppointmentPage(),
-                                      ));
+                                  // Navigator.push(
+                                  //     context,
+                                  //     MaterialPageRoute(
+                                  //       builder: (context) =>
+                                  //           ScheduleAppointmentPage(),
+                                  //     ));
                                 },
                                 child: Text(
                                   "Accept",

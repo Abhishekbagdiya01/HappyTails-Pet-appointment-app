@@ -3,10 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:pet_appointment_app/models/pet_model.dart';
 import 'package:pet_appointment_app/repository/pet_repository.dart';
-import 'package:pet_appointment_app/screens/doctor_dashbord.dart';
-import 'package:pet_appointment_app/screens/user_home_screen.dart';
+
 import 'package:pet_appointment_app/screens/veterinary_screen.dart';
 import 'package:pet_appointment_app/utils/snackbar.dart';
+import 'package:pet_appointment_app/widgets/custom_textfeild.dart';
 
 import '../customButton/custom_button.dart';
 
@@ -26,6 +26,16 @@ class _PetProfilePageState extends State<PetProfilePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text(
+          'Pet Profile',
+          textAlign: TextAlign.center,
+          style: GoogleFonts.jacquesFrancois(
+            fontSize: 24,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+      ),
       resizeToAvoidBottomInset: false,
       body: Padding(
         padding: EdgeInsets.symmetric(vertical: 10.0),
@@ -33,22 +43,6 @@ class _PetProfilePageState extends State<PetProfilePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            SizedBox(
-              height: 50,
-            ),
-            Text(
-              'Pet Profile',
-              textAlign: TextAlign.center,
-              style: GoogleFonts.jacquesFrancois(
-                fontSize: 24,
-                fontWeight: FontWeight.bold,
-
-                //const Color(0xffD3F2EE)
-              ),
-            ),
-            SizedBox(
-              height: 50,
-            ),
             Image(image: AssetImage('assets/images/undraw_select.png')),
             Text(
               'Tell us about your pet',

@@ -3,10 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:pet_appointment_app/models/appointment_model.dart';
 import 'package:pet_appointment_app/models/pet_model.dart';
-import 'package:pet_appointment_app/screens/doctor_dashbord.dart';
 import 'package:pet_appointment_app/screens/doctor_list_page.dart';
-
 import '../customButton/custom_button.dart';
+import '../widgets/custom_textfeild.dart';
 
 class VetScreen extends StatefulWidget {
   VetScreen({required this.pet});
