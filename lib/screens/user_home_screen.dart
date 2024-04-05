@@ -40,10 +40,6 @@ class _UserDashBordPageOneState extends State<UserHomeScreen> {
     ];
     String uid = FirebaseAuth.instance.currentUser!.uid;
     return Scaffold(
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {},
-        child: Icon(Icons.add),
-      ),
       appBar: AppBar(
         backgroundColor: Color(0xffBCF4DC),
         bottom: PreferredSize(
@@ -57,6 +53,7 @@ class _UserDashBordPageOneState extends State<UserHomeScreen> {
               if (snapshot.hasData) {
                 UserModel user = snapshot.data!;
                 return Container(
+                  width: double.infinity,
                   color: Color(0xffBCF4DC),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.end,

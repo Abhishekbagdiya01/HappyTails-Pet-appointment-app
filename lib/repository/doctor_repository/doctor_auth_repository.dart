@@ -38,4 +38,8 @@ class DoctorAuthRepository {
       return error.message.toString();
     }
   }
+
+  logoutDoctor() async {
+    await _auth.signOut();
+  }
 }

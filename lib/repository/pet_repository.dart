@@ -39,7 +39,8 @@ class PetRepository {
 
 //Get pet by Id
   Future<PetModel> getPetByID({required String petId}) async {
-    final pet = await _firebaseFirestore.collection("pets").doc(petId).get();
+    DocumentSnapshot pet =
+        await _firebaseFirestore.collection("Pets").doc(petId).get();
     return PetModel.fromSnap(pet);
   }
 

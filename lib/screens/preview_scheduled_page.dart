@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:pet_appointment_app/models/appointment_model.dart';
 import 'package:pet_appointment_app/repository/appointment_repository.dart';
+import 'package:pet_appointment_app/screens/user_dashbord.dart';
 import 'package:pet_appointment_app/screens/user_home_screen.dart';
 import 'package:pet_appointment_app/utils/snackbar.dart';
 
@@ -125,7 +126,7 @@ class _ScheduledPageState extends State<PreviewScheduledPage> {
                       Navigator.pushAndRemoveUntil(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => UserHomeScreen(),
+                            builder: (context) => UserDashbordPage(),
                           ),
                           (route) => false);
                     } else {

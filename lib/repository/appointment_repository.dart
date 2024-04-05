@@ -29,7 +29,7 @@ class AppointmentRepository {
           status: "pending");
       await _firebaseFirestore
           .collection("Appointments")
-          .doc(appointmentModel.petId)
+          .doc(newAppointmentModel.appointmentId)
           .set(newAppointmentModel.toMap());
 
       await _firebaseFirestore
@@ -97,7 +97,7 @@ class AppointmentRepository {
           .doc(appointmentModel.appointmentId)
           .update({"status": "accepted"});
 
-      return "Appointment removed";
+      return "Appointment accepted";
     } on FirebaseException catch (error) {
       return "${error.message}";
     }
