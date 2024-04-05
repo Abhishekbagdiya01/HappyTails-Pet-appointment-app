@@ -82,11 +82,12 @@ class SignInScreenDoctor extends StatelessWidget {
                               SharedPref().setAccountType("Doctor");
 
                               snackbarMessenger(context, response);
-                              Navigator.pushReplacement(
+                              Navigator.pushAndRemoveUntil(
                                   context,
                                   MaterialPageRoute(
                                     builder: (context) => DoctorDashboard(),
-                                  ));
+                                  ),
+                                  (route) => false);
                             } else {
                               snackbarMessenger(context, response);
                             }

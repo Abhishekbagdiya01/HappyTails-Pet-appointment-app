@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:pet_appointment_app/repository/doctor_repository/doctor_auth_repository.dart';
 
 import 'package:pet_appointment_app/screens/doctor_home_screen.dart';
+import 'package:pet_appointment_app/screens/doctor_profile_Page.dart';
 import 'package:pet_appointment_app/utils/shared_preference.dart';
 
 class DoctorDashboard extends StatefulWidget {
@@ -18,12 +19,7 @@ class _DoctorDeshbordState extends State<DoctorDashboard> {
     DoctorHomePage(),
     Text('Search Page'),
     Text('Favorites Page'),
-    TextButton(
-        onPressed: () {
-          DoctorAuthRepository().logoutDoctor();
-          SharedPref().setAccountType("");
-        },
-        child: Text("Logout"))
+    DoctorProfilePageScreen()
   ];
 
   void _onItemTapped(int index) {

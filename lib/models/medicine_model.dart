@@ -2,40 +2,56 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 class MedicineModel {
   String medicineId;
+  String ownerId;
   String petId;
-  String medicineName;
+  String diagnosisDetails;
+  String prescribedMedication;
   String dosage;
-  String duration;
-  String instructions;
+  String vaccineName;
+  String administrationRoute;
+  String dateAdministered;
+  String nextDueDate;
+
   MedicineModel({
     required this.medicineId,
-    required this.medicineName,
+    required this.ownerId,
     required this.petId,
+    required this.diagnosisDetails,
+    required this.prescribedMedication,
     required this.dosage,
-    required this.duration,
-    required this.instructions,
+    required this.vaccineName,
+    required this.administrationRoute,
+    required this.dateAdministered,
+    required this.nextDueDate,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'medicineId': medicineId,
-      'medicineName': medicineName,
+      'ownerId': ownerId,
       'petId': petId,
+      'diagnosisDetails': diagnosisDetails,
+      'prescribedMedication': prescribedMedication,
       'dosage': dosage,
-      'duration': duration,
-      'instructions': instructions,
+      'vaccineName': vaccineName,
+      'administrationRoute': administrationRoute,
+      'dateAdministered': dateAdministered,
+      'nextDueDate': nextDueDate
     };
   }
 
   factory MedicineModel.fromSnap(DocumentSnapshot documentSnapshot) {
     final snap = documentSnapshot.data() as Map<String, dynamic>;
     return MedicineModel(
-      medicineId: snap['medicineId'],
-      medicineName: snap['medicineName'],
-      petId: snap['petId'],
-      dosage: snap['dosage'],
-      duration: snap['duration'],
-      instructions: snap['instructions'],
-    );
+        medicineId: snap['medicineId'],
+        ownerId: snap['ownerId'],
+        petId: snap['petId'],
+        diagnosisDetails: snap['DiagnosisDetails'],
+        prescribedMedication: snap['prescribedMedication'],
+        dosage: snap['dosage'],
+        administrationRoute: snap['administrationRoute'],
+        dateAdministered: snap['dateAdministered'],
+        vaccineName: snap['vaccineName'],
+        nextDueDate: snap['nextDueDate']);
   }
 }

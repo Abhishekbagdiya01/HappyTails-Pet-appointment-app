@@ -9,7 +9,7 @@ class DoctorAuthRepository {
   Future<String> signUpDoctor({required DoctorModel doctorModel}) async {
     try {
       await _auth.createUserWithEmailAndPassword(
-          email: doctorModel.email!, password: doctorModel.password!);
+          email: doctorModel.email, password: doctorModel.password!);
 
       DoctorModel newUser = DoctorModel(
           uid: _auth.currentUser!.uid,

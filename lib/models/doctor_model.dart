@@ -9,7 +9,7 @@ class DoctorModel {
   String specialization;
   String? accountType;
   String? password;
-  String? imageUrl;
+  String imageUrl;
 
   DoctorModel(
       {required this.uid,
@@ -20,7 +20,7 @@ class DoctorModel {
       required this.specialization,
       this.accountType,
       this.password,
-      this.imageUrl});
+      required this.imageUrl});
 
   static fromSnap(DocumentSnapshot documentSnapshot) {
     final snapShot = documentSnapshot.data() as Map<String, dynamic>;
