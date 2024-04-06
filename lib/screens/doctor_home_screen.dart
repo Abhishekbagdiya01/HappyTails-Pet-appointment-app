@@ -46,30 +46,24 @@ class _DoctorHomePageState extends State<DoctorHomePage> {
                   height: screenHeight / 5,
                   color: Color(0xffBCF4DC),
                   child: Column(
-                    mainAxisAlignment: MainAxisAlignment.end,
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: doctorInfo!.imageUrl == ""
-                            ? CircleAvatar(
-                                backgroundColor: Colors.cyan,
-                                radius: 60,
-                              )
-                            : CircleAvatar(
-                                backgroundColor: Colors.black,
-                                radius: 60,
-                                backgroundImage:
-                                    NetworkImage(doctorInfo!.imageUrl!),
-                              ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Text(
-                          ' Welcome Doctor ${doctorInfo!.name}',
-                          style: GoogleFonts.jacquesFrancois(
-                            fontWeight: FontWeight.normal,
-                            //const Color(0xffD3F2EE)
-                          ),
+                      doctorInfo!.imageUrl == ""
+                          ? CircleAvatar(
+                              backgroundColor: Colors.cyan,
+                              radius: 60,
+                            )
+                          : CircleAvatar(
+                              backgroundColor: Colors.black,
+                              radius: 60,
+                              backgroundImage:
+                                  NetworkImage(doctorInfo!.imageUrl),
+                            ),
+                      Text(
+                        ' Welcome Doctor ${doctorInfo!.name}',
+                        style: GoogleFonts.jacquesFrancois(
+                          fontSize: 22,
+                          fontWeight: FontWeight.normal,
                         ),
                       ),
                     ],

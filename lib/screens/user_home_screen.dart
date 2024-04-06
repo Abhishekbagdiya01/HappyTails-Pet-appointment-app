@@ -60,13 +60,19 @@ class _UserDashBordPageOneState extends State<UserHomeScreen> {
                     children: [
                       Padding(
                         padding: const EdgeInsets.all(8.0),
-                        child: user.profileUrl == null
-                            ? SizedBox()
+                        child: user.profileUrl == ""
+                            ? CircleAvatar(
+                                radius: 60,
+                                child: Icon(
+                                  Icons.person,
+                                  size: 50,
+                                ),
+                              )
                             : CircleAvatar(
                                 backgroundColor: Colors.cyan,
                                 radius: 60,
-                                // backgroundImage:
-                                //     NetworkImage('${user.profileUrl}'),
+                                backgroundImage:
+                                    NetworkImage('${user.profileUrl}'),
                               ),
                       ),
                       Padding(

@@ -1,9 +1,11 @@
 import 'dart:async';
 import 'dart:developer';
+import 'dart:typed_data';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:pet_appointment_app/models/meet_up_model.dart';
 import 'package:pet_appointment_app/models/user_model.dart';
+import 'package:pet_appointment_app/utils/firebase_storage.dart';
 import 'package:uuid/uuid.dart';
 
 class UserRepository {
@@ -15,6 +17,49 @@ class UserRepository {
     try {
       final user = await _firebaseFirestore.collection("Users").doc(uid).get();
       return UserModel.fromSnap(user);
+    } on FirebaseException catch (error) {
+      throw error.message ?? "An unexpected error occurred";
+    }
+  }
+
+//update profile
+
+  Future<String> updateProfile(
+      {required UserModel userModel, Uint8List? image}) async {
+    try {
+      if (image != null) {
+        String imageUrl = await StorageMethods()
+            .uploadImageToStorage(image: image, uid: userModel.uid);
+        UserModel user = UserModel(
+            uid: userModel.uid,
+            name: userModel.name,
+            phoneNumber: userModel.phoneNumber,
+            email: userModel.email,
+            appointments: userModel.appointments,
+            doctors: userModel.doctors,
+            pets: userModel.pets,
+            profileUrl: imageUrl);
+        await _firebaseFirestore
+            .collection("Users")
+            .doc(userModel.uid)
+            .update(user.toMap());
+      } else {
+        UserModel user = UserModel(
+            uid: userModel.uid,
+            name: userModel.name,
+            phoneNumber: userModel.phoneNumber,
+            email: userModel.email,
+            appointments: userModel.appointments,
+            doctors: userModel.doctors,
+            pets: userModel.pets,
+            profileUrl: userModel.profileUrl);
+        await _firebaseFirestore
+            .collection("Users")
+            .doc(userModel.uid)
+            .update(user.toMap());
+      }
+
+      return "Updated Successfully";
     } on FirebaseException catch (error) {
       throw error.message ?? "An unexpected error occurred";
     }

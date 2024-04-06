@@ -2,24 +2,24 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 class UserModel {
   String uid;
-  String? name;
-  String? email;
-  String? phoneNumber;
+  String name;
+  String email;
+  String phoneNumber;
   String? password;
-  List? pets;
-  List? doctors;
-  List? appointments;
-  String? profileUrl;
+  List pets;
+  List doctors;
+  List appointments;
+  String profileUrl;
 
   UserModel(
       {required this.uid,
-      this.name,
-      this.phoneNumber,
-      this.email,
-      this.appointments,
-      this.pets,
-      this.doctors,
-      this.profileUrl,
+      required this.name,
+      required this.phoneNumber,
+      required this.email,
+      required this.appointments,
+      required this.pets,
+      required this.doctors,
+      required this.profileUrl,
       this.password});
 
   static fromSnap(DocumentSnapshot documentSnapshot) {

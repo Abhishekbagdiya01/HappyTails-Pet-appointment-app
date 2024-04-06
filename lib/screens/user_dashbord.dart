@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:pet_appointment_app/repository/user_repository/user_auth_repository.dart';
+
 import 'package:pet_appointment_app/screens/user_home_screen.dart';
-import 'package:pet_appointment_app/utils/shared_preference.dart';
+import 'package:pet_appointment_app/screens/user_profile_page.dart';
 
 class UserDashbordPage extends StatefulWidget {
   const UserDashbordPage({super.key});
@@ -17,12 +17,7 @@ class _UserDashbordPageState extends State<UserDashbordPage> {
     UserHomeScreen(),
     Text("messages"),
     Text("Notificaton"),
-    TextButton(
-        onPressed: () {
-          UserAuthRepository().logoutUser();
-          SharedPref().setAccountType("");
-        },
-        child: Text("Logout"))
+    UserProfilePageScreen()
   ];
 
   void _onItemTapped(int index) {

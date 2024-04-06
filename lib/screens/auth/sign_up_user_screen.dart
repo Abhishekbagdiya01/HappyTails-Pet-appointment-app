@@ -112,7 +112,11 @@ class SignUpScreen extends StatelessWidget {
                                         name: nameController.text,
                                         email: emailController.text,
                                         phoneNumber: phoneNoController.text,
-                                        password: passwordController.text));
+                                        password: passwordController.text,
+                                        appointments: [],
+                                        doctors: [],
+                                        pets: [],
+                                        profileUrl: ""));
                             if (result == "Successfully Signed Up") {
                               SharedPref().setAccountType("User");
                               Navigator.pushAndRemoveUntil(

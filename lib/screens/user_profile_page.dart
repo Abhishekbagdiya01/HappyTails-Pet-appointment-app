@@ -3,10 +3,12 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:pet_appointment_app/models/doctor_model.dart';
+import 'package:pet_appointment_app/models/user_model.dart';
 import 'package:pet_appointment_app/repository/doctor_repository/doctor_auth_repository.dart';
-import 'package:pet_appointment_app/repository/doctor_repository/doctor_repository.dart';
+
+import 'package:pet_appointment_app/repository/user_repository/user_repository.dart';
 import 'package:pet_appointment_app/screens/doctor_dashbord.dart';
+import 'package:pet_appointment_app/screens/user_dashbord.dart';
 import 'package:pet_appointment_app/screens/welcome/lets_star.dart';
 import 'package:pet_appointment_app/utils/image_picker.dart';
 import 'package:pet_appointment_app/utils/shared_preference.dart';
@@ -49,13 +51,13 @@ class _ProfilePageState extends State<UserProfilePageScreen> {
         ),
       ),
       body: FutureBuilder(
-        future: DoctorRepository().getDoctorById(uid: uid),
+        future: UserRepository().getUserById(uid: uid),
         builder: (context, snapshot) {
           if (snapshot.hasData) {
-            DoctorModel doctor = snapshot.data!;
+            UserModel user = snapshot.data!;
             List navigationDeatails = [
               EditUserProfile(
-                doctorModel: doctor,
+                userModel: user,
               )
               // FAQPage(),
               // FAQPage(),
@@ -75,18 +77,21 @@ class _ProfilePageState extends State<UserProfilePageScreen> {
                       children: [
                         Padding(
                           padding: const EdgeInsets.all(8.0),
-                          child: doctor.imageUrl == ""
+                          child: user.profileUrl == ""
                               ? CircleAvatar(
-                                  backgroundColor: Colors.black,
                                   radius: 60,
-                                  backgroundImage: AssetImage(
-                                      'assets/images/Salina_Zaman.png'),
+                                  // backgroundImage: AssetImage(
+                                  //     'assets/images/Salina_Zaman.png'),
+                                  child: Icon(
+                                    Icons.person,
+                                    size: 50,
+                                  ),
                                 )
                               : CircleAvatar(
                                   backgroundColor: Colors.black,
                                   radius: 60,
                                   backgroundImage:
-                                      NetworkImage(doctor.imageUrl.toString()),
+                                      NetworkImage(user.profileUrl.toString()),
                                 ),
                         ),
                       ],
@@ -97,7 +102,7 @@ class _ProfilePageState extends State<UserProfilePageScreen> {
                         Padding(
                           padding: const EdgeInsets.only(top: 5.0, bottom: 5.0),
                           child: Text(
-                            doctor.name,
+                            user.name,
                             style: GoogleFonts.jacquesFrancois(
                               fontWeight: FontWeight.bold,
                               fontSize: 20,
@@ -175,8 +180,8 @@ class _ProfilePageState extends State<UserProfilePageScreen> {
 }
 
 class EditUserProfile extends StatefulWidget {
-  EditUserProfile({required this.doctorModel, super.key});
-  DoctorModel doctorModel;
+  EditUserProfile({required this.userModel, super.key});
+  UserModel userModel;
 
   @override
   State<EditUserProfile> createState() => _EditDoctorProfileState();
@@ -185,13 +190,11 @@ class EditUserProfile extends StatefulWidget {
 class _EditDoctorProfileState extends State<EditUserProfile> {
   Uint8List? pickedImage;
   TextEditingController nameController = TextEditingController();
-  TextEditingController degreeController = TextEditingController();
-  TextEditingController specializationController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
-    nameController.text = widget.doctorModel.name;
-    degreeController.text = widget.doctorModel.degree;
-    specializationController.text = widget.doctorModel.specialization;
+    nameController.text = widget.userModel.name;
+
     return Scaffold(
       appBar: AppBar(
         title: Text("Edit Profile"),
@@ -205,16 +208,18 @@ class _EditDoctorProfileState extends State<EditUserProfile> {
                     radius: 100,
                     backgroundImage: MemoryImage(pickedImage!),
                   )
-                : widget.doctorModel.imageUrl != ""
+                : widget.userModel.profileUrl != ""
                     ? CircleAvatar(
                         radius: 100,
                         backgroundImage:
-                            NetworkImage(widget.doctorModel.imageUrl),
+                            NetworkImage(widget.userModel.profileUrl),
                       )
                     : CircleAvatar(
                         radius: 100,
-                        backgroundImage:
-                            AssetImage("assets/images/Salina_Zaman.png"),
+                        child: Icon(
+                          Icons.person,
+                          size: 50,
+                        ),
                       ),
             SizedBox(
               width: 100,
@@ -239,36 +244,27 @@ class _EditDoctorProfileState extends State<EditUserProfile> {
               title: "Name",
               controller: nameController,
             ),
-            CustomTextFeild(
-              title: "Degree",
-              controller: degreeController,
-            ),
-            CustomTextFeild(
-              title: "Specialization",
-              controller: specializationController,
-            ),
             CustomButtom(
               title: "Save",
               voidCallback: () async {
-                if (nameController.text.trim().isNotEmpty &&
-                    degreeController.text.trim().isNotEmpty &&
-                    specializationController.text.trim().isNotEmpty) {
-                  DoctorModel doctor = DoctorModel(
-                      uid: widget.doctorModel.uid,
+                if (nameController.text.trim().isNotEmpty) {
+                  UserModel user = UserModel(
+                      uid: widget.userModel.uid,
                       name: nameController.text,
-                      phoneNumber: widget.doctorModel.phoneNumber,
-                      email: widget.doctorModel.email,
-                      degree: degreeController.text,
-                      specialization: specializationController.text,
-                      imageUrl: "");
-                  String response = await DoctorRepository()
-                      .updateProfile(doctorModel: doctor, image: pickedImage!);
+                      phoneNumber: widget.userModel.phoneNumber,
+                      email: widget.userModel.email,
+                      appointments: widget.userModel.appointments,
+                      doctors: widget.userModel.doctors,
+                      pets: widget.userModel.pets,
+                      profileUrl: widget.userModel.profileUrl);
+                  String response = await UserRepository()
+                      .updateProfile(userModel: user, image: pickedImage!);
                   if (response == "Updated Successfully") {
                     snackbarMessenger(context, response);
                     Navigator.pushAndRemoveUntil(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => DoctorDashboard(),
+                          builder: (context) => UserDashbordPage(),
                         ),
                         (route) => false);
                   } else {

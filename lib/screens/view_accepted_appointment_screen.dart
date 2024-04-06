@@ -41,31 +41,31 @@ class _GenerateReportPageState extends State<AcceptedAppointmentListScreen> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: widget.DoctorInfo.imageUrl == ""
-                      ? CircleAvatar(
-                          backgroundColor: Colors.cyan,
-                          radius: 60,
-                          backgroundImage:
-                              AssetImage('assets/images/Salina_Zaman.png'),
-                        )
-                      : CircleAvatar(
-                          // backgroundColor: Colors.black,
-                          radius: 60,
-                          backgroundImage:
-                              NetworkImage(widget.DoctorInfo.imageUrl!),
-                        ),
+                widget.DoctorInfo.imageUrl == ""
+                    ? CircleAvatar(
+                        backgroundColor: Colors.cyan,
+                        radius: 60,
+                        // backgroundImage:
+                        //     AssetImage('assets/images/Salina_Zaman.png'),
+                        child: Icon(Icons.person),
+                      )
+                    : CircleAvatar(
+                        radius: 60,
+                        backgroundImage:
+                            NetworkImage(widget.DoctorInfo.imageUrl),
+                      ),
+                SizedBox(
+                  height: 10,
                 ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Text(
-                    widget.DoctorInfo.name,
-                    style: GoogleFonts.jacquesFrancois(
-                      fontWeight: FontWeight.normal,
-                      //const Color(0xffD3F2EE)
-                    ),
+                Text(
+                  widget.DoctorInfo.name,
+                  style: GoogleFonts.jacquesFrancois(
+                    fontSize: 22,
+                    fontWeight: FontWeight.normal,
                   ),
+                ),
+                SizedBox(
+                  height: 10,
                 ),
               ],
             ),
@@ -76,7 +76,7 @@ class _GenerateReportPageState extends State<AcceptedAppointmentListScreen> {
         child: Column(
           children: [
             SizedBox(
-              height: screenHeight / 30,
+              height: 10,
             ),
             Container(
               width: screenWidth / 100,
@@ -89,10 +89,7 @@ class _GenerateReportPageState extends State<AcceptedAppointmentListScreen> {
               child: Text(
                 "Completed Appointment:-",
                 style: GoogleFonts.jacquesFrancois(
-                    fontWeight: FontWeight.normal, fontSize: 24
-
-                    //const Color(0xffD3F2EE)
-                    ),
+                    fontWeight: FontWeight.normal, fontSize: 24),
               ),
             ),
             SizedBox(

@@ -18,6 +18,7 @@ class UserAuthRepository {
           appointments: [],
           doctors: [],
           pets: [],
+          profileUrl: "",
           phoneNumber: userModel.email);
       await _firebaseFirestore
           .collection("Users")
