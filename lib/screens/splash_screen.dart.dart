@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:pet_appointment_app/screens/app_tour_page.dart';
 import 'package:pet_appointment_app/screens/doctor_dashbord.dart';
 import 'package:pet_appointment_app/screens/user_dashbord.dart';
 import 'package:pet_appointment_app/screens/welcome/lets_star.dart';
@@ -40,7 +41,7 @@ class _SplashPageState extends State<SplashPage> {
         Navigator.pushReplacement(
             context,
             MaterialPageRoute(
-              builder: (context) => letsStart(),
+              builder: (context) => AppTourPage(),
             ));
       }
     });

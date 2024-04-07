@@ -85,13 +85,19 @@ class _DoctorListPageState extends State<DoctorListPage> {
                                     children: [
                                       Column(
                                         children: [
-                                          CircleAvatar(
-                                            radius: 55,
-                                            backgroundImage: AssetImage(
-                                                doctors[index]
-                                                    .imageUrl
-                                                    .toString()),
-                                          )
+                                          doctors[index].imageUrl == ""
+                                              ? CircleAvatar(
+                                                  radius: 55,
+                                                  child: Icon(
+                                                    Icons.person,
+                                                    size: 50,
+                                                  ),
+                                                )
+                                              : CircleAvatar(
+                                                  radius: 55,
+                                                  backgroundImage: NetworkImage(
+                                                      doctors[index].imageUrl),
+                                                )
                                         ],
                                       ),
                                       Padding(

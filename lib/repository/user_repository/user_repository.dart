@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'dart:typed_data';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:pet_appointment_app/models/NotificationModel.dart';
 import 'package:pet_appointment_app/models/meet_up_model.dart';
 import 'package:pet_appointment_app/models/user_model.dart';
 import 'package:pet_appointment_app/utils/firebase_storage.dart';

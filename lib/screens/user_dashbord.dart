@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pet_appointment_app/screens/notification_screen.dart';
 
 import 'package:pet_appointment_app/screens/user_home_screen.dart';
 import 'package:pet_appointment_app/screens/user_profile_page.dart';
@@ -16,7 +17,7 @@ class _UserDashbordPageState extends State<UserDashbordPage> {
   List<Widget> _widgetOptions = <Widget>[
     UserHomeScreen(),
     Text("messages"),
-    Text("Notificaton"),
+    NotificationScreen(),
     UserProfilePageScreen()
   ];
 

@@ -3,6 +3,7 @@ import 'package:pet_appointment_app/repository/doctor_repository/doctor_auth_rep
 
 import 'package:pet_appointment_app/screens/doctor_home_screen.dart';
 import 'package:pet_appointment_app/screens/doctor_profile_Page.dart';
+import 'package:pet_appointment_app/screens/notification_screen.dart';
 import 'package:pet_appointment_app/utils/shared_preference.dart';
 
 class DoctorDashboard extends StatefulWidget {
@@ -17,8 +18,8 @@ class _DoctorDeshbordState extends State<DoctorDashboard> {
 
   List<Widget> _widgetOptions = <Widget>[
     DoctorHomePage(),
-    Text('Search Page'),
-    Text('Favorites Page'),
+    Text('Message'),
+    NotificationScreen(),
     DoctorProfilePageScreen()
   ];
 

@@ -46,12 +46,12 @@ class MedicineModel {
         medicineId: snap['medicineId'],
         ownerId: snap['ownerId'],
         petId: snap['petId'],
-        diagnosisDetails: snap['DiagnosisDetails'],
+        diagnosisDetails: snap['diagnosisDetails'],
         prescribedMedication: snap['prescribedMedication'],
         dosage: snap['dosage'],
+        vaccineName: snap['vaccineName'],
         administrationRoute: snap['administrationRoute'],
         dateAdministered: snap['dateAdministered'],
-        vaccineName: snap['vaccineName'],
         nextDueDate: snap['nextDueDate']);
   }
 }

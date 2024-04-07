@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:pet_appointment_app/models/user_model.dart';
 import 'package:pet_appointment_app/repository/user_repository/user_repository.dart';
+import 'package:pet_appointment_app/screens/medicine_report_user_page.dart';
+import 'package:pet_appointment_app/screens/training_page.dart';
 import 'package:pet_appointment_app/screens/veterinary_screen.dart';
 import 'package:pet_appointment_app/screens/socialization_screen.dart';
 
@@ -28,13 +30,13 @@ class _UserDashBordPageOneState extends State<UserHomeScreen> {
       {'img': 'assets/images/shoes.png', 'title': 'Medicine'},
       {'img': 'assets/images/flag.png', 'title': 'Training'},
       {'img': 'assets/images/Socialization.png', 'title': 'Socialization'},
-      {'img': 'assets/images/cat.png', 'title': 'Appointment'},
-      {'img': 'assets/images/cat.png', 'title': 'Adopt a Pet'},
+      // {'img': 'assets/images/cat.png', 'title': 'Appointment'},
+      // {'img': 'assets/images/cat.png', 'title': 'Adopt a Pet'},
     ];
 
     List<Widget> NavigationDetails = [
-      VeterinaryScreen(), SocializationScreen(), SocializationScreen(),
-      SocializationScreen(), SocializationScreen(), SocializationScreen(),
+      VeterinaryScreen(), PetListScreen(), TrainingPage(),
+      SocializationScreen()
 
       //TrainingPage(),
     ];
@@ -103,7 +105,7 @@ class _UserDashBordPageOneState extends State<UserHomeScreen> {
           ),
           Container(
             width: screenWidth / 1,
-            height: screenHeight / 1.6,
+            height: screenHeight * 0.64,
             child: GridView.builder(
               itemCount: Details.length,
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
@@ -123,9 +125,13 @@ class _UserDashBordPageOneState extends State<UserHomeScreen> {
                           ));
                     },
                     child: Card(
-                      elevation: 1,
+                      elevation: 5,
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(20)),
                       child: Container(
-                        color: Color(0xffFFEADE),
+                        decoration: BoxDecoration(
+                            color: Color(0xffFFEADE),
+                            borderRadius: BorderRadius.circular(20)),
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [

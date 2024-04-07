@@ -111,13 +111,28 @@ class DoctorRepository {
   }
 
   // Get medicine report by petId
-  Future<MedicineModel> getMedicineReportByPetId(String petId) async {
-    QuerySnapshot querySnapshot = await _firebaseFirestore
-        .collection("Medicines")
-        .where("petId", isEqualTo: petId)
-        .get();
-    final medicineReport = querySnapshot.docs.first;
+  Future<List<MedicineModel>> getMedicineReportByPetId(String petId) async {
+    try {
+      log("PET ID : ${petId}  ");
+      QuerySnapshot querySnapshot = await _firebaseFirestore
+          .collection("Medicines")
+          .where("petId", isEqualTo: petId)
+          .get();
+      final docs = querySnapshot.docs.first.data() as Map<String, dynamic>;
+      print(docs['petId']);
 
-    return MedicineModel.fromSnap(medicineReport);
+      List<MedicineModel> listOfMedicine = [];
+      querySnapshot.docs.forEach((doc) {
+        listOfMedicine.add(MedicineModel.fromSnap(doc));
+      });
+
+      // List<MedicineModel> listOfMedicine =
+      //     querySnapshot.docs.map((doc) => MedicineModel.fromSnap(doc)).toList();
+      log("PET ID : ${petId}  ||  ${listOfMedicine.first.petId}");
+
+      return listOfMedicine;
+    } on FirebaseException catch (error) {
+      throw error.message ?? "An unexpected error occurred";
+    }
   }
 }
