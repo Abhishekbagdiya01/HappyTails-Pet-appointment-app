@@ -106,16 +106,15 @@ class _ProfilePageState extends State<UserProfilePageScreen> {
                             style: GoogleFonts.jacquesFrancois(
                               fontWeight: FontWeight.bold,
                               fontSize: 20,
-                              //const Color(0xffD3F2EE)
                             ),
                           ),
                         ),
                       ],
                     ),
                     Container(
-                      height: screenHeight * 0.42,
-                      //color: Colors.red,
+                      height: screenHeight * 0.32,
                       child: ListView.builder(
+                        physics: NeverScrollableScrollPhysics(),
                         itemCount: details.length,
                         itemBuilder: (context, index) {
                           return Padding(

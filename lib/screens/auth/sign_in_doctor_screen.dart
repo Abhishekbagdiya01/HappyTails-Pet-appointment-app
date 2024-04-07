@@ -6,6 +6,7 @@ import 'package:pet_appointment_app/constants.dart';
 import 'package:pet_appointment_app/repository/doctor_repository/doctor_auth_repository.dart';
 
 import 'package:pet_appointment_app/screens/auth/components/sign_up_form_user.dart';
+import 'package:pet_appointment_app/screens/auth/forget_password_page.dart';
 
 import 'package:pet_appointment_app/screens/doctor_dashbord.dart';
 import 'package:pet_appointment_app/utils/shared_preference.dart';
@@ -62,6 +63,16 @@ class SignInScreenDoctor extends StatelessWidget {
                             obscureText: true,
                             decoration: InputDecoration(hintText: "******"),
                           ),
+                          TextButton(
+                              onPressed: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) =>
+                                          ForgetPasswordPage(),
+                                    ));
+                              },
+                              child: Text("Forgot password ?")),
                           const SizedBox(height: defaultPadding),
                         ],
                       ),

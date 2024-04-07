@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:pet_appointment_app/repository/user_repository/user_auth_repository.dart';
 import 'package:pet_appointment_app/screens/auth/components/sign_up_form_user.dart';
+import 'package:pet_appointment_app/screens/auth/forget_password_page.dart';
 import 'package:pet_appointment_app/screens/doctor_dashbord.dart';
 import 'package:pet_appointment_app/screens/user_dashbord.dart';
 import 'package:pet_appointment_app/utils/shared_preference.dart';
@@ -59,6 +60,16 @@ class SignInScreen extends StatelessWidget {
                             obscureText: true,
                             decoration: InputDecoration(hintText: "******"),
                           ),
+                          TextButton(
+                              onPressed: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) =>
+                                          ForgetPasswordPage(),
+                                    ));
+                              },
+                              child: Text("Forgot password ?")),
                           const SizedBox(height: defaultPadding),
                         ],
                       ),
@@ -78,11 +89,13 @@ class SignInScreen extends StatelessWidget {
                             if (response == "Successfully login") {
                               SharedPref().setAccountType("User");
                               snackbarMessenger(context, response);
-                              Navigator.pushReplacement(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => UserDashbordPage(),
-                                  ));
+                              Navigator.pushAndRemoveUntil(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => UserDashbordPage(),
+                                ),
+                                (route) => false,
+                              );
                             } else {
                               snackbarMessenger(context, response);
                             }
