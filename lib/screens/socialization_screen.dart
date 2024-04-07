@@ -4,6 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:pet_appointment_app/customButton/custom_button.dart';
 import 'package:pet_appointment_app/models/meet_up_model.dart';
 import 'package:pet_appointment_app/repository/user_repository/user_repository.dart';
+import 'package:pet_appointment_app/screens/faq_screen.dart';
 import 'package:pet_appointment_app/utils/snackbar.dart';
 
 import '../widgets/custom_clip.dart';
@@ -34,10 +35,10 @@ class _SocializationPageState extends State<SocializationScreen> {
       },
     ];
 
-    // List navigateDetails=[
-    //MeetUpDetailsPage();
-    //  FAQPage(),
-    // ];
+    List navigatePages = [
+      MeetUpDetailsPage(),
+      FAQPage(),
+    ];
 
     List boxColor = [
       Color(0xffFF9595),
@@ -48,8 +49,6 @@ class _SocializationPageState extends State<SocializationScreen> {
     final double screenWidth = screenSize.width;
     final double screenHeight = screenSize.height;
 
-    // Retrive information about the device's orientation
-    final Orientation orientation = MediaQuery.of(context).orientation;
     return Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.transparent,
@@ -93,7 +92,7 @@ class _SocializationPageState extends State<SocializationScreen> {
                         onTap: () {
                           Navigator.push(context, MaterialPageRoute(
                             builder: (context) {
-                              return MeetUpDetailsPage();
+                              return navigatePages[index];
                             },
                           ));
                         },
@@ -148,9 +147,6 @@ class _SocializationPageState extends State<SocializationScreen> {
         ));
   }
 }
-
-///
-///
 
 class MeetUpPage extends StatefulWidget {
   const MeetUpPage({super.key});

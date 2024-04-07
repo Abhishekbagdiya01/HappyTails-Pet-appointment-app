@@ -265,6 +265,7 @@ class _TrainingDetailsPageState extends State<TrainingDetailsPage> {
             Container(
               height: screenHeight / 2.2,
               child: GridView.builder(
+                physics: NeverScrollableScrollPhysics(),
                 shrinkWrap: true,
                 itemCount: basicDetails.length,
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(

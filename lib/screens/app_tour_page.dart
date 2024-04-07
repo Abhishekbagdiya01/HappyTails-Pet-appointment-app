@@ -48,13 +48,13 @@ class _TourPageState extends State<AppTourPage> {
     return Scaffold(
       body: Stack(
         children: [
-          // Image(
-          //   image: AssetImage(
-          //     contantDetails[index]['img'],
-          //   ),
-          //   fit: BoxFit.cover,
-          //   height: double.infinity,
-          // ),
+          Image(
+            image: AssetImage(
+              contantDetails[index]['img'],
+            ),
+            fit: BoxFit.cover,
+            height: double.infinity,
+          ),
           Positioned(
             right: screenWidth / 20,
             top: screenHeight / 1.9,

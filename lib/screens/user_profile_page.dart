@@ -8,6 +8,8 @@ import 'package:pet_appointment_app/repository/doctor_repository/doctor_auth_rep
 
 import 'package:pet_appointment_app/repository/user_repository/user_repository.dart';
 import 'package:pet_appointment_app/screens/doctor_dashbord.dart';
+import 'package:pet_appointment_app/screens/faq_screen.dart';
+import 'package:pet_appointment_app/screens/privacy_policy_screen.dart';
 import 'package:pet_appointment_app/screens/user_dashbord.dart';
 import 'package:pet_appointment_app/screens/welcome/lets_star.dart';
 import 'package:pet_appointment_app/utils/image_picker.dart';
@@ -58,12 +60,17 @@ class _ProfilePageState extends State<UserProfilePageScreen> {
             List navigationDeatails = [
               EditUserProfile(
                 userModel: user,
-              )
-              // FAQPage(),
-              // FAQPage(),
-              // FAQPage(),
-              // FAQPage(),
-              // FAQPage(),
+              ),
+              PrivacyPolicyScreen(),
+              Scaffold(
+                appBar: AppBar(
+                  title: Text('Settings'),
+                ),
+                body: Center(
+                  child: Text("Settings"),
+                ),
+              ),
+              FAQPage(),
             ];
             return Container(
               child: Padding(
