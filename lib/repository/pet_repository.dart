@@ -37,6 +37,19 @@ class PetRepository {
     }
   }
 
+  // Edit pet profile
+  Future editPetProfile({required PetModel petModel}) async {
+    try {
+      await _firebaseFirestore
+          .collection("Pets")
+          .doc(petModel.petId)
+          .update(petModel.toMap());
+      return "Pet updated";
+    } on FirebaseException catch (error) {
+      return "${error.message}";
+    }
+  }
+
 //Get pet by Id
   Future<PetModel> getPetByID({required String petId}) async {
     DocumentSnapshot pet =

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:pet_appointment_app/models/pet_model.dart';
 import 'package:pet_appointment_app/repository/pet_repository.dart';
+import 'package:pet_appointment_app/screens/edit_pet_profile.dart';
 
 import 'package:pet_appointment_app/screens/pet_profile_page.dart';
 import 'package:pet_appointment_app/screens/vet_Screen.dart';
@@ -52,55 +53,73 @@ class _AppointmentListPageState extends State<VeterinaryScreen> {
                       color: Color(0xffBCF4DC),
                     ),
                     child: ListTile(
-                        onLongPress: () {
-                          showDialog(
-                            context: context,
-                            builder: (context) => AlertDialog(
-                              title: Text(
-                                  "Are you sure you want to delete Pet profile?"),
-                              actions: [
-                                TextButton(
-                                    onPressed: () {
-                                      PetRepository().deletePetProfile(
-                                          petId: pets[index].petId);
-                                      setState(() {
-                                        Navigator.pop(context);
-                                      });
-                                    },
-                                    child: Text("Yes")),
-                                TextButton(
-                                    onPressed: () {
+                      onLongPress: () {
+                        showDialog(
+                          context: context,
+                          builder: (context) => AlertDialog(
+                            title: Text(
+                                "Are you sure you want to delete Pet profile?"),
+                            actions: [
+                              TextButton(
+                                  onPressed: () {
+                                    PetRepository().deletePetProfile(
+                                        petId: pets[index].petId);
+                                    setState(() {
                                       Navigator.pop(context);
-                                    },
-                                    child: Text("No")),
-                              ],
-                            ),
-                          );
-                        },
-                        title: Text(
-                          pets[index].petName,
-                          style: GoogleFonts.jacquesFrancois(
-                              fontWeight: FontWeight.bold, fontSize: 25),
-                        ),
-                        subtitle: Text(
-                          pets[index].category,
-                          style: GoogleFonts.jacquesFrancois(
-                              fontWeight: FontWeight.bold, fontSize: 18),
-                        ),
-                        trailing: ElevatedButton(
-                          onPressed: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) =>
-                                      VetScreen(pet: pets[index]),
-                                ));
-                          },
-                          child: Text(
-                            'Book an appointment',
-                            style: TextStyle(color: Colors.white),
+                                    });
+                                  },
+                                  child: Text("Yes")),
+                              TextButton(
+                                  onPressed: () {
+                                    Navigator.pop(context);
+                                  },
+                                  child: Text("No")),
+                            ],
                           ),
-                        )),
+                        );
+                      },
+                      title: Text(
+                        pets[index].petName,
+                        style: GoogleFonts.jacquesFrancois(
+                            fontWeight: FontWeight.bold, fontSize: 25),
+                      ),
+                      subtitle: Text(
+                        pets[index].category,
+                        style: GoogleFonts.jacquesFrancois(
+                            fontWeight: FontWeight.bold, fontSize: 18),
+                      ),
+                      trailing: SizedBox(
+                        width: MediaQuery.sizeOf(context).width * 0.55,
+                        child: Row(
+                          children: [
+                            ElevatedButton(
+                              onPressed: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) =>
+                                          VetScreen(pet: pets[index]),
+                                    ));
+                              },
+                              child: Text(
+                                'Book an appointment',
+                                style: TextStyle(color: Colors.white),
+                              ),
+                            ),
+                            IconButton(
+                                onPressed: () {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) =>
+                                            EditPetProfile(pet: pets[index]),
+                                      ));
+                                },
+                                icon: Icon(Icons.edit))
+                          ],
+                        ),
+                      ),
+                    ),
                   ),
                 );
               },

@@ -174,8 +174,6 @@ class _TrainingDetailsPageState extends State<TrainingDetailsPage> {
     final double screenWidth = screenSize.width;
     final double screenHeight = screenSize.height;
 
-    // Retrive information about the device's orientation
-    final Orientation orientation = MediaQuery.of(context).orientation;
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.transparent,

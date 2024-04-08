@@ -101,9 +101,8 @@ class _GenerateReportPageState extends State<AcceptedAppointmentListScreen> {
                 builder: (context, snapshot) {
                   if (snapshot.hasData) {
                     List<AppointmentModel> arrAppointments = snapshot.data!;
+
                     return ListView.builder(
-                      physics: NeverScrollableScrollPhysics(),
-                      shrinkWrap: true,
                       itemCount: arrAppointments.length,
                       itemBuilder: (context, index) {
                         return Padding(
@@ -185,78 +184,6 @@ class _GenerateReportPageState extends State<AcceptedAppointmentListScreen> {
                                     child: CircularProgressIndicator());
                               }
                             },
-                            // child: Container(
-                            //   width: 100,
-                            //   height: 150,
-                            //   decoration: BoxDecoration(
-                            //       borderRadius: BorderRadius.circular(14),
-                            //       color: Color(0xffBCF4DC)),
-                            //   child: Column(
-                            //     mainAxisAlignment:
-                            //         MainAxisAlignment.spaceAround,
-                            //     children: [
-                            //       Row(
-                            //         mainAxisAlignment:
-                            //             MainAxisAlignment.spaceAround,
-                            //         children: [
-                            //           Text(
-                            //             'Pet Name : ${arrAppointments[index].petName}',
-                            //             style: TextStyle(
-                            //                 color: Colors.black, fontSize: 20),
-                            //           ),
-                            //           FutureBuilder(
-                            //             future: PetRepository().getPetByID(
-                            //                 petId:
-                            //                     arrAppointments[index].petId),
-                            //             builder: (context, snapshot) {
-                            //               if (snapshot.hasData) {
-                            //                 return Text(
-                            //                   'Category : ${snapshot.data!.category}',
-                            //                   style: TextStyle(
-                            //                       color: Colors.black,
-                            //                       fontSize: 20),
-                            //                 );
-                            //               } else {
-                            //                 return CircularProgressIndicator();
-                            //               }
-                            //             },
-                            //           ),
-                            //         ],
-                            //       ),
-                            //       Row(
-                            //         mainAxisAlignment:
-                            //             MainAxisAlignment.spaceAround,
-                            //         children: [
-                            //           Text(
-                            //             'Date : ${arrAppointments[index].date}',
-                            //             style: TextStyle(
-                            //                 color: Colors.black, fontSize: 20),
-                            //           ),
-                            //           Text(
-                            //             'Time : ${arrAppointments[index].time}',
-                            //             style: TextStyle(
-                            //               color: Colors.black,
-                            //               fontSize: 20,
-                            //             ),
-                            //           )
-                            //         ],
-                            //       ),
-                            //       ElevatedButton(
-                            //           onPressed: () {
-                            //             Navigator.push(
-                            //                 context,
-                            //                 MaterialPageRoute(
-                            //                   builder: (context) =>
-                            //                       MedicineReportPage(petInfo: pet,),
-                            //                 ));
-                            //           },
-                            //           child: const Text(
-                            //             "Generate",
-                            //             style: TextStyle(color: Colors.black),
-                            //           ))
-                            //     ],
-                            //   ),
-                            // ),
                           ),
                         );
                       },
