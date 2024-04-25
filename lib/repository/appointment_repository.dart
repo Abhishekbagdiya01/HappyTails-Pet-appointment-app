@@ -178,6 +178,7 @@ class AppointmentRepository {
       QuerySnapshot querySnapshot = await _firebaseFirestore
           .collection("Notifications")
           .where('receiverId', isEqualTo: receiverId)
+          // .orderBy("timeStamp", descending: true)
           .get();
       List<NotificationModel> listOfNotifications = querySnapshot.docs
           .map((docs) => NotificationModel.fromMap(docs))

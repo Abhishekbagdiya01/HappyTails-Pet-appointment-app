@@ -5,9 +5,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:pet_appointment_app/models/user_model.dart';
 import 'package:pet_appointment_app/repository/doctor_repository/doctor_auth_repository.dart';
-
 import 'package:pet_appointment_app/repository/user_repository/user_repository.dart';
-import 'package:pet_appointment_app/screens/doctor_dashbord.dart';
 import 'package:pet_appointment_app/screens/faq_screen.dart';
 import 'package:pet_appointment_app/screens/privacy_policy_screen.dart';
 import 'package:pet_appointment_app/screens/user_dashbord.dart';

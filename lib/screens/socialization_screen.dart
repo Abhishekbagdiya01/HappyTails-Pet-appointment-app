@@ -171,7 +171,7 @@ class _MeetUpPageState extends State<MeetUpPage> {
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
         title: Text(
-          'Meet UP',
+          'Create Meetup',
           textAlign: TextAlign.center,
           style: GoogleFonts.jacquesFrancois(
             fontSize: 24,

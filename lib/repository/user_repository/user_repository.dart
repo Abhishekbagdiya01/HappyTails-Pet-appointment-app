@@ -80,8 +80,9 @@ class UserRepository {
           participients: meetUpsModel.participients);
       await _firebaseFirestore
           .collection("Meetups")
-          .doc(uid)
-          .set(meetUp.toMap());
+          .add((meetUp.toMap()))
+          .then((value) => {log("Meet-up created")});
+
       return "Meet-up created";
     } on FirebaseException catch (error) {
       return "Error : ${error.message}";

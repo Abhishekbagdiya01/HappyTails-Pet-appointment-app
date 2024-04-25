@@ -5,7 +5,7 @@ class PrivacyPolicyScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Track-n-Go Privacy Policy'),
+        title: Text('HappyTails'),
       ),
       body: SingleChildScrollView(
         padding: EdgeInsets.all(16.0),

@@ -12,25 +12,25 @@ class AppTourPage extends StatefulWidget {
 class _TourPageState extends State<AppTourPage> {
   List contantDetails = [
     {
-      'img': 'assets/images/page.png',
+      'img': 'assets/images/slash screen.png',
       'title': 'Bonding',
       'desc':
           '"With HappyTails we learned to enjoy and relax while outside, with other dogs and friends"'
     },
     {
-      'img': 'assets/images/page.png',
+      'img': 'assets/images/slash screen2.png',
       'title': 'Well-behaved dog',
       'desc':
           '“Incorporating the exercises found on HappyTails helps strengthen your bond with your pet & ensure continued learning success”'
     },
     {
-      'img': 'assets/images/page.png',
+      'img': 'assets/images/slash screen3.png',
       'title': 'Socializing',
       'desc':
           '"Connect, engage, and create lasting bonds. Welcome to Socializing, where every connection is a step toward a vibrant community."'
     },
     {
-      'img': 'assets/images/page.png',
+      'img': 'assets/images/slash screen4.png',
       'title': 'Training',
       'desc':
           "Unlock Your Pet's Potential with Tailored Training Solutions on HappyTails"
@@ -54,6 +54,7 @@ class _TourPageState extends State<AppTourPage> {
             ),
             fit: BoxFit.cover,
             height: double.infinity,
+            width: double.infinity,
           ),
           Positioned(
             right: screenWidth / 20,
@@ -92,7 +93,7 @@ class _TourPageState extends State<AppTourPage> {
                       fontSize: 20,
                       fontWeight: FontWeight.bold))),*/
           Positioned(
-              right: screenWidth / 1.15,
+              right: screenWidth / 1.20,
               top: screenHeight / 1.1,
               child: InkWell(
                 onTap: () {
