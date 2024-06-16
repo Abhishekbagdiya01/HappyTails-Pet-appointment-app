@@ -37,7 +37,7 @@ class SignUpScreen extends StatelessWidget {
                       "Create Account",
                       style: Theme.of(context)
                           .textTheme
-                          .headline5!
+                          .headlineMedium!
                           .copyWith(fontWeight: FontWeight.bold),
                     ),
                     Row(

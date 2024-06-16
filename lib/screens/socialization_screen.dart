@@ -228,6 +228,7 @@ class _MeetUpPageState extends State<MeetUpPage> {
                   } else {
                     snackbarMessenger(context, "Field cannot be empty");
                   }
+                  Navigator.pop(context);
                   Navigator.pushReplacement(
                       context,
                       MaterialPageRoute(

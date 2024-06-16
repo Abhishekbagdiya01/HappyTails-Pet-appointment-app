@@ -42,7 +42,7 @@ class SignInScreenDoctor extends StatelessWidget {
                       "Sign In",
                       style: Theme.of(context)
                           .textTheme
-                          .headline5!
+                          .headlineMedium!
                           .copyWith(fontWeight: FontWeight.bold),
                     ),
                     const SizedBox(height: defaultPadding * 2),

@@ -118,7 +118,7 @@ class _ScheduleDateState extends State<ScheduleDateScreen> {
                 )),
             Container(
               width: screenWidth / 1,
-              height: screenHeight / 2.5,
+              height: screenHeight / 2.2,
               child: TableCalendar(
                   //firstDay: DateTime.utc(2010, 10, 16),
                   firstDay: DateTime.now(),

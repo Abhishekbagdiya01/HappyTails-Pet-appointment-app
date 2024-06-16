@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:pet_appointment_app/screens/training_details_page.dart';
+import 'package:pet_appointment_app/utils/snackbar.dart';
 import 'package:pet_appointment_app/widgets/custom_clip.dart';
 import 'package:pet_appointment_app/widgets/custom_textfeild.dart';
 
@@ -90,13 +91,7 @@ class _TrainingPageState extends State<TrainingPage> {
                               builder: (context) => TrainingDetailsPage(),
                             ));
                       } else {
-                        final snackBar = SnackBar(
-                          content: Text('Coming soon !!!'),
-                          backgroundColor:
-                              Colors.blue, // Optional: Change background color
-                        );
-
-                        ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                        snackbarMessenger(context, "Coming soon !!!");
                       }
                     },
                     child: Image(
