@@ -1,16 +1,35 @@
-# pet_appointment_app
+# HappyTails - Pet health care and appointment app
 
-A new Flutter project.
+**HappyTails** is a pet healthcare application designed to bridge the gap
+between pet owners and veterinary professionals. It caters to two user types: pet owners 
+and doctors.
 
-## Getting Started
+### Features
+**Pet owners:**
+* Create profiles for their various pets.
+* Browse doctor profiles and book appointments based on availability.
+* Provide pre-diagnosis information to doctors to facilitate consultation.
+* Participate in a social forum to connect with other pet owners, create 
+  meetup posts, and organize pet gatherings.
+* Access a library of exercise and training tutorials for their pets.</br></br>
+**Doctors:**
+* View pet profiles and appointment details.
+* Accept or decline appointment requests.
+* Provide in-app consultations and precise medical descriptions with 
+  medication and dosage recommendations.
+### Getting Started
 
-This project is a starting point for a Flutter application.
+To get started, clone this repository and run the following commands:
 
-A few resources to get you started if this is your first Flutter project:
+  ```
+  flutter pub get
+  flutter run
+  ```
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+### Screenshots
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+<img src="https://github.com/Abhishekbagdiya01/HappyTails-Pet-appointment-app/blob/master/screenshots/on_boarding.png" />
+<img src="https://github.com/Abhishekbagdiya01/HappyTails-Pet-appointment-app/blob/master/screenshots/pet_owner.png" />
+<img src="https://github.com/Abhishekbagdiya01/HappyTails-Pet-appointment-app/blob/master/screenshots/meeting_faq.png" />
+
+###
