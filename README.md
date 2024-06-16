@@ -30,6 +30,8 @@ To get started, clone this repository and run the following commands:
 
 <img src="https://github.com/Abhishekbagdiya01/HappyTails-Pet-appointment-app/blob/master/screenshots/on_boarding.png" />
 <img src="https://github.com/Abhishekbagdiya01/HappyTails-Pet-appointment-app/blob/master/screenshots/pet_owner.png" />
+<img src="https://github.com/Abhishekbagdiya01/HappyTails-Pet-appointment-app/blob/master/screenshots/Android%20Emulator%20-%20Pixel_7_Pro_API_34_5554%206_14_2024%201_15_34%20AM.png" />
+<img src="https://github.com/Abhishekbagdiya01/HappyTails-Pet-appointment-app/blob/master/screenshots/Android%20Emulator%20-%20Pixel_7_Pro_API_34_5554%206_14_2024%201_15_42%20AM.png" />
 <img src="https://github.com/Abhishekbagdiya01/HappyTails-Pet-appointment-app/blob/master/screenshots/meeting_faq.png" />
 
 ###
